@@ -2,13 +2,26 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
+import {fetchData} from '../actions/question';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
+        this.props.dispatch(fetchData());
     }
 
+    
     render() {
+        // console.log(this.props.dispatch(fetchProtectedData()));
+        let word;
+        if (this.props.question) {
+            word = this.props.question.spanish;
+            // console.log(test);
+        };
+        
+        // console.log({this.props.question});
+
+        // test printed at null
         return (
             <div className="dashboard">
                 <div className="dashboard-username">
@@ -19,18 +32,23 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
+                <div className="dashboard-question">
+                    <h3>What is "{word}" in English?</h3>
+                </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
+    console.log(state);
     const {currentUser} = state.auth;
     return {
         username: state.auth.currentUser.username,
         name: currentUser.fullname,
         email: currentUser.email,
-        protectedData: state.protectedData.data
+        protectedData: state.protectedData.data,
+        question: state.question
     };
 };
 
