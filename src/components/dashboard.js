@@ -9,7 +9,6 @@ export class Dashboard extends React.Component {
         this.props.dispatch(fetchProtectedData());
         this.props.dispatch(fetchData());
     }
-  }
 
     render() {
         // console.log(this.props.dispatch(fetchProtectedData()));
@@ -39,38 +38,6 @@ export class Dashboard extends React.Component {
         );
     }
   }
-
-  render() {
-    if (this.state.isCorrect) {
-      return (
-        <div className="isCorrect">
-          <button>
-            Next Question
-          </button>
-        </div>
-      )
-    }
-    return (
-      <div className="dashboard">
-        <p>Gato</p>
-        <form
-          onSubmit={event => {
-          event.preventDefault();
-          this.checkAnswer(this.answer.value);
-        }}>
-          <input 
-            name="answer" 
-            placeholder="Your Answer"
-            ref={input => this.answer = input}
-          />
-          <button>
-            Submit
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
 
 const mapStateToProps = state => {
     console.log(state);
