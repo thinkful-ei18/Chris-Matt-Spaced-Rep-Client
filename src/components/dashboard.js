@@ -7,11 +7,12 @@ import {fetchData} from '../actions/question';
 export class Dashboard extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
-        this.props.dispatch(fetchData());
+        this.props.dispatch(fetchData(this.props.id));
     }
 
     
     render() {
+        console.log('ID', this.props.id);
         // console.log(this.props.dispatch(fetchProtectedData()));
         let word;
         if (this.props.question) {
@@ -41,9 +42,10 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     const {currentUser} = state.auth;
+    console.log(currentUser.id);
     return {
+        id: currentUser.id,
         username: state.auth.currentUser.username,
         name: currentUser.fullname,
         email: currentUser.email,
