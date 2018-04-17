@@ -2,26 +2,39 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
-import {fetchData} from '../actions/question';
 
 export class Dashboard extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            isCorrect: 'nothing'
+        }
+    }
     componentDidMount() {
         this.props.dispatch(fetchProtectedData());
-        this.props.dispatch(fetchData(this.props.id));
     }
 
     render() {
-        console.log('ID', this.props.id);
-        // console.log(this.props.dispatch(fetchProtectedData()));
         let word;
         if (this.props.question) {
-            word = this.props.question.spanish;
-            // console.log(test);
-        };
-        
-        // console.log({this.props.question});
+            word = this.props.question[0].spanish;
+        }
 
-        // test printed at null
+        let displayResult;
+        if (this.state.isCorrect === 'correct') {
+            return (
+            <div>
+                <p>You are correct</p>
+            </div>
+            )
+        } else if (this.state.isCorrect === 'incorrect') {
+            return (
+            <div>
+                <p>You are incorrect</p>
+            </div>
+            )
+        }
+        console.log(this.state.isCorrect);
         return (
             <div className="dashboard">
                 <div className="dashboard-username">
@@ -34,6 +47,27 @@ export class Dashboard extends React.Component {
                 </div>
                 <div className="dashboard-question">
                     <h3>What is "{word}" in English?</h3>
+                    <form onSubmit={event => {
+                        event.preventDefault();
+                        if (this.answer.value === this.props.question[0].english) {
+                            this.setState({
+                                isCorrect: 'correct'
+                            })
+                        } else {
+                            this.setState({
+                                isCorrect: 'incorrect'
+                            })
+                        }
+                    }}>
+                        <label htmlFor="answer">English Translation</label>
+                        <input 
+                            placeholder="Your Answer"
+                            name="answer"
+                            ref={input => this.answer = input}
+                        />
+                        <button>Submit</button>
+                    </form>
+                    {displayResult}
                 </div>
             </div>
         );
@@ -42,14 +76,12 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
-    console.log(currentUser.id);
     return {
-        id: currentUser.id,
         username: state.auth.currentUser.username,
         name: currentUser.fullname,
         email: currentUser.email,
         protectedData: state.protectedData.data,
-        question: state.question
+        question: currentUser.questions
     };
 };
 

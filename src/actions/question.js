@@ -1,5 +1,4 @@
 import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
 
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const fetchDataSuccess = question => ({
@@ -14,15 +13,13 @@ export const fetchDataError = error => ({
 });
 
 export const fetchData = (id) => dispatch => {
-  // console.log('ID from fetch', id);
-  // const authToken = getState().auth.authToken;
-  fetch(`${API_BASE_URL}/users/${id}`)
+  fetch(`${API_BASE_URL}/users/${id}`, {
+    method: 'GET'
+    })
       .then(res => {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
-        // console.log('RES IS:');
-        // console.log(res.json());
         return res.json();
       })
       .then(question => {

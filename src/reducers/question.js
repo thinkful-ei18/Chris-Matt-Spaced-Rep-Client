@@ -4,15 +4,14 @@ import {
 } from '../actions/question';
 
 const initialState = {
-  question: null,
+  questions: null,
   error: null
 };
 
 export default function reducer(state = initialState, action) {
   if (action.type === FETCH_DATA_SUCCESS) {
-    //   console.log(action.question);
       return Object.assign({}, state, {
-          ...action.question,
+          questions: action.question.questions,
           error: null
       });
   } else if (action.type === FETCH_DATA_ERROR) {
