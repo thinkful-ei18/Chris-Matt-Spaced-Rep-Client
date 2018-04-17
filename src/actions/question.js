@@ -13,13 +13,16 @@ export const fetchDataError = error => ({
     error
 });
 
-export const fetchData = () => dispatch => {
+export const fetchData = (id) => dispatch => {
+  // console.log('ID from fetch', id);
   // const authToken = getState().auth.authToken;
-  fetch(`${API_BASE_URL}/questions`)
+  fetch(`${API_BASE_URL}/users/${id}`)
       .then(res => {
         if (!res.ok) {
           return Promise.reject(res.statusText);
         }
+        // console.log('RES IS:');
+        // console.log(res.json());
         return res.json();
       })
       .then(question => {
