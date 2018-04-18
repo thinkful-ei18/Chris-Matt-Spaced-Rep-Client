@@ -4,6 +4,8 @@ import requiresLogin from './requires-login';
 import {fetchData} from '../actions/question';
 import {updateQuestions} from '../actions/users';
 
+import '../stylesheets/dashboard.css';
+
 export class Dashboard extends React.Component {
     constructor() {
         super();
@@ -33,7 +35,7 @@ export class Dashboard extends React.Component {
 
         if (this.state.isCorrect === 'correct') {
             return (
-            <div>
+            <div className="dashboard-result">
                 <p>You are correct</p>
                 <button
                     onClick={event => {
@@ -49,7 +51,7 @@ export class Dashboard extends React.Component {
             )
         } else if (this.state.isCorrect === 'incorrect') {
             return (
-            <div>
+            <div className="dashboard-result">
                 <p>You are incorrect</p>
                 <button
                     onClick={event => {
