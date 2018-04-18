@@ -1,23 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+import {fetchData} from '../actions/question';
+import {updateQuestions} from '../actions/users';
 
 export class Dashboard extends React.Component {
     constructor() {
         super();
         this.state = {
-            isCorrect: 'nothing'
+            isCorrect: 'nothing',
+            spanish: null
         }
     }
     componentDidMount() {
-        this.props.dispatch(fetchProtectedData());
+        this.props.dispatch(fetchData(this.props.id));
     }
 
     render() {
-        let word;
-        if (this.props.question) {
-            word = this.props.question[0].spanish;
+        let questions = this.props.question;
+        let question;
+        for (let i = 0; i < questions.length; i++) {
+            if (questions[i].head) {
+                question = questions[i];
+            }
         }
 
         let displayResult;
@@ -25,16 +30,33 @@ export class Dashboard extends React.Component {
             return (
             <div>
                 <p>You are correct</p>
+                <button
+                    onClick={event => {
+                        event.preventDefault();
+                        this.setState({
+                            isCorrect: 'nothing'
+                        })
+                    }}>
+                    Next Question
+                </button>
             </div>
             )
         } else if (this.state.isCorrect === 'incorrect') {
             return (
             <div>
                 <p>You are incorrect</p>
+                <button
+                    onClick={event => {
+                        event.preventDefault();
+                        this.setState({
+                            isCorrect: 'nothing'
+                        })
+                    }}>
+                    Next Question
+                </button>
             </div>
             )
         }
-        console.log(this.state.isCorrect);
         return (
             <div className="dashboard">
                 <div className="dashboard-username">
@@ -46,14 +68,18 @@ export class Dashboard extends React.Component {
                     Protected data: {this.props.protectedData}
                 </div>
                 <div className="dashboard-question">
-                    <h3>What is "{word}" in English?</h3>
+                    <h3>What is "{question.spanish}" in English?</h3>
                     <form onSubmit={event => {
                         event.preventDefault();
-                        if (this.answer.value === this.props.question[0].english) {
+                        if (this.answer.value === question.english) {
+                            this.props.dispatch(updateQuestions(this.props.id, this.answer.value, 1));
+                            this.props.dispatch(fetchData(this.props.id));
                             this.setState({
                                 isCorrect: 'correct'
                             })
                         } else {
+                            this.props.dispatch(updateQuestions(this.props.id, this.answer.value, 0));
+                            this.props.dispatch(fetchData(this.props.id));
                             this.setState({
                                 isCorrect: 'incorrect'
                             })
@@ -77,9 +103,12 @@ export class Dashboard extends React.Component {
 const mapStateToProps = state => {
     const {currentUser} = state.auth;
     return {
-        username: state.auth.currentUser.username,
+        currentUser: state.auth,
+        newUser: state.question,
+        username: currentUser.username,
         name: currentUser.fullname,
         email: currentUser.email,
+        id: currentUser.id,
         protectedData: state.protectedData.data,
         question: currentUser.questions
     };

@@ -25,3 +25,26 @@ export const registerUser = user => dispatch => {
             }
         });
 };
+
+export const updateQuestions = (id, english, result) => dispatch => {
+    return fetch(`${API_BASE_URL}/users/${id}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({english, result})
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                // Convert ValidationErrors into SubmissionErrors for Redux Form
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
+        });
+};
