@@ -1,0 +1,67 @@
+.login-form {
+  width: 400px;
+  margin: 16px auto;
+  font-size: 16px;
+  background: #ebebeb;
+  padding: 12px;
+}
+
+.login-header {
+  margin-top: 0;
+  /* margin-bottom: 0; */
+}
+
+.login-form input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login-header {
+  background: #28d;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+  margin-bottom: 30px;
+  /* padding-left: 30px; */
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #888;
+  /* border-color: red; */
+}
+
+.login-form button {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.login-form button:hover {
+  background: #17c;
+}
+
+/* Buttons' focus effect */
+.login-form button:focus {
+  border-color: #05a;
+}
