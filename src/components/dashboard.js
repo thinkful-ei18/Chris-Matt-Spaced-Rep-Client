@@ -8,24 +8,29 @@ export class Dashboard extends React.Component {
     constructor() {
         super();
         this.state = {
-            isCorrect: 'nothing',
-            spanish: null
+            isCorrect: 'nothing'
         }
     }
+    
     componentDidMount() {
         this.props.dispatch(fetchData(this.props.id));
     }
 
     render() {
-        let questions = this.props.question;
+        let questions = this.props.questions;
         let question;
+        let answer;
         for (let i = 0; i < questions.length; i++) {
             if (questions[i].head) {
-                question = questions[i];
+                question = (
+                    <h3>
+                        What is "{questions[i].spanish}" in English?
+                    </h3>
+                );
+                answer = questions[i].english;
             }
         }
 
-        let displayResult;
         if (this.state.isCorrect === 'correct') {
             return (
             <div>
@@ -33,6 +38,7 @@ export class Dashboard extends React.Component {
                 <button
                     onClick={event => {
                         event.preventDefault();
+                        this.props.dispatch(fetchData(this.props.id));
                         this.setState({
                             isCorrect: 'nothing'
                         })
@@ -48,6 +54,7 @@ export class Dashboard extends React.Component {
                 <button
                     onClick={event => {
                         event.preventDefault();
+                        this.props.dispatch(fetchData(this.props.id));
                         this.setState({
                             isCorrect: 'nothing'
                         })
@@ -59,33 +66,25 @@ export class Dashboard extends React.Component {
         }
         return (
             <div className="dashboard">
-                <div className="dashboard-username">
-                    Username: {this.props.username}
-                </div>
-                <div className="dashboard-name">Name: {this.props.name}</div>
-                <div className="dashboard-email">Email: {this.props.email}</div>
-                <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
-                </div>
                 <div className="dashboard-question">
-                    <h3>What is "{question.spanish}" in English?</h3>
+                {question}
                     <form onSubmit={event => {
                         event.preventDefault();
-                        if (this.answer.value === question.english) {
-                            this.props.dispatch(updateQuestions(this.props.id, this.answer.value, 1));
-                            this.props.dispatch(fetchData(this.props.id));
+                        let userAnswer = this.answer.value.toLowerCase();
+                        if (userAnswer === answer) {
+                            this.props.dispatch(updateQuestions(this.props.id, userAnswer, 1));
                             this.setState({
                                 isCorrect: 'correct'
                             })
                         } else {
-                            this.props.dispatch(updateQuestions(this.props.id, this.answer.value, 0));
-                            this.props.dispatch(fetchData(this.props.id));
+                            this.props.dispatch(updateQuestions(this.props.id, userAnswer, 0));
                             this.setState({
                                 isCorrect: 'incorrect'
                             })
                         }
+                        this.answer.value = '';
                     }}>
-                        <label htmlFor="answer">English Translation</label>
+                        <label htmlFor="answer">English Translation:</label>
                         <input 
                             placeholder="Your Answer"
                             name="answer"
@@ -93,7 +92,6 @@ export class Dashboard extends React.Component {
                         />
                         <button>Submit</button>
                     </form>
-                    {displayResult}
                 </div>
             </div>
         );
@@ -101,16 +99,12 @@ export class Dashboard extends React.Component {
   }
 
 const mapStateToProps = state => {
-    const {currentUser} = state.auth;
+    const questions = state.question
     return {
-        currentUser: state.auth,
-        newUser: state.question,
-        username: currentUser.username,
-        name: currentUser.fullname,
-        email: currentUser.email,
-        id: currentUser.id,
-        protectedData: state.protectedData.data,
-        question: currentUser.questions
+        id: state.auth.currentUser.id,
+        questions: questions.questions,
+        correct: questions.correct,
+        incorrect: questions.incorrect
     };
 };
 
