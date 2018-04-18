@@ -23,6 +23,7 @@ export class RegistrationForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
+                <h2 className="login-header">Register for Spanish Tutor</h2>
                 <label htmlFor="fullname">Full Name</label>
                 <Field component={Input} type="text" name="fullname" />
                 <label htmlFor="email">Email</label>
