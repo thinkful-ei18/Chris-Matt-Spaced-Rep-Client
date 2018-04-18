@@ -1,3 +1,73 @@
-.dashboard {
-  background-color: pink;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,300,600);
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "open sans", helvetica, arial, sans;
+  background: url(http://farm8.staticflickr.com/7064/6858179818_5d652f531c_h.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.dashboard-question {
+  position: absolute;
+  width: 400px;
+  height: 320px;
+  height: auto;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 5px;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  margin-left: -180px;
+  margin-top: -200px;
+  border: solid black 3px;
+}
+
+.dashboard-question h3 {
+  background: #28d;
+  /* margin: 0; */
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.dashboard-question input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.dashboard-question input[name="answer"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+  margin-bottom: 30px;
+  /* padding-left: 30px; */
+}
+
+.dashboard-question button {
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.dashboard-result {
+  background-color: green;
 }
