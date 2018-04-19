@@ -1,29 +1,26 @@
 .login-form {
   width: 400px;
   margin: 16px auto;
+  padding-bottom: 16px;
   font-size: 16px;
   background: #ebebeb;
-  padding: 12px;
+  border-radius: 10px;
+}
+
+.form-error {
+  color: tomato;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-error {
+  position: relative;
+  left: 5%;
 }
 
 .login-header {
   margin-top: 0;
-  /* margin-bottom: 0; */
-}
-
-.login-form input {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  border-width: 1px;
-  border-style: solid;
-  padding: 16px;
-  outline: 0;
-  font-family: inherit;
-  font-size: 0.95em;
-}
-
-.login-header {
+  border-radius: 5px 5px 0 0;
   background: #28d;
   padding: 20px;
   font-size: 1.4em;
@@ -31,6 +28,28 @@
   text-align: center;
   text-transform: uppercase;
   color: #fff;
+  /* margin-bottom: 0; */
+}
+
+.login-form label {
+  position: relative;
+  left: 5%;
+}
+
+.login-form input {
+  box-sizing: border-box;
+  position: relative;
+  left: 5%;
+  display: block;
+  width: 90%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
 }
 
 .login-form input[type="text"],
@@ -38,7 +57,6 @@
   background: #fff;
   border-color: #bbb;
   color: #555;
-  margin-bottom: 30px;
   /* padding-left: 30px; */
 }
 
@@ -50,10 +68,14 @@
 
 .login-form button {
   background: #28d;
+  position: relative;
+  left: 5%;
   border-color: transparent;
+  border-radius: 5px;
   color: #fff;
   cursor: pointer;
   padding: 10px 20px;
+  margin-top: 12px;
   text-align: center;
 }
 

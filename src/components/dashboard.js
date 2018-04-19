@@ -54,8 +54,7 @@ export class Dashboard extends React.Component {
         } else if (this.state.isCorrect === 'incorrect') {
             return (
             <div className="dashboard-result">
-                <img src="http://epeusa.com/wp-content/uploads/2017/03/pinata-broken.jpg" />
-                <p>You are incorrect</p>
+                <p>I'm sorry. The correct answer was "{answer}".</p>
                 <button
                     onClick={event => {
                         event.preventDefault();

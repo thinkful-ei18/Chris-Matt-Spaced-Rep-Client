@@ -15,7 +15,7 @@ export class LoginForm extends React.Component {
         let error;
         if (this.props.error) {
             error = (
-                <div className="form-error" aria-live="polite">
+                <div className="form-error login-error" aria-live="polite">
                     {this.props.error}
                 </div>
             );
@@ -26,7 +26,6 @@ export class LoginForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                {error}
                 <h2 className="login-header">Welcome to Spanish Tutor</h2>
                 <label htmlFor="username">Username</label>
                 <Field
@@ -44,8 +43,9 @@ export class LoginForm extends React.Component {
                     id="password"
                     validate={[required, nonEmpty]}
                 />
+                {error}
                 <button disabled={this.props.pristine || this.props.submitting}>
-                    Log in
+                    Login
                 </button>
             </form>
         );

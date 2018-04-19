@@ -12,40 +12,51 @@ body {
   background-size: cover;
 }
 
+.dashboard {
+  display: flex;
+  justify-content: center;
+}
+
 .dashboard-question {
   position: absolute;
   width: 400px;
-  height: 320px;
-  height: auto;
   background-color: #fff;
-  margin: auto;
+  padding-bottom: 16px;
+  margin-top: 15vh;
   border-radius: 5px;
-  padding: 20px;
-  left: 50%;
-  top: 50%;
-  margin-left: -180px;
-  margin-top: -200px;
   border: solid black 3px;
+  border-radius: 10px;
 }
 
 .dashboard-question h3 {
   background: #28d;
-  /* margin: 0; */
-  padding: 20px;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 20px 0;
   font-size: 1.4em;
   font-weight: normal;
   text-align: center;
   text-transform: uppercase;
   color: #fff;
+  border-radius: 5px 5px 0 0;
+}
+
+.dashboard-question label {
+  position: relative;
+  left: 5%;
 }
 
 .dashboard-question input {
   box-sizing: border-box;
   display: block;
-  width: 100%;
+  position: relative;
+  left: 5%;
+  width: 90%;
   border-width: 1px;
   border-style: solid;
-  padding: 16px;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 14px;
   outline: 0;
   font-family: inherit;
   font-size: 0.95em;
@@ -55,17 +66,19 @@ body {
   background: #fff;
   border-color: #bbb;
   color: #555;
-  margin-bottom: 30px;
   /* padding-left: 30px; */
 }
 
 .dashboard-question button {
   background: #28d;
   border-color: transparent;
+  position: relative;
+  left: 5%;
   color: #fff;
   cursor: pointer;
   padding: 10px 20px;
   text-align: center;
+  border-radius: 5px;
 }
 
 .dashboard-result {
@@ -112,4 +125,22 @@ body {
   margin-right: auto;
   width: 300px;
   margin-bottom: 20px;
+  background-color: green;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 75vh;
+}
+
+.home p {
+  font-size: 16px;
+}
+
+.home a {
+  font-size: 16px;
 }
