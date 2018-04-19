@@ -13,10 +13,11 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+    console.log(action);
     if (action.type === FETCH_DATA_REQUEST) {
         return Object.assign({}, state, {
-          loading: true,
-          error: null
+            loading: true,
+            error: null
         })
       }
     if (action.type === FETCH_DATA_SUCCESS) {

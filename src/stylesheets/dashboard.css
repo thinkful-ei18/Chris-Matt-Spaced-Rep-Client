@@ -69,5 +69,47 @@ body {
 }
 
 .dashboard-result {
-  background-color: green;
+  position: absolute;
+  width: 400px;
+  height: 320px;
+  height: auto;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 5px;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  margin-left: -180px;
+  margin-top: -200px;
+  border: solid black 3px;
+  /* background-color: green; */
+}
+
+.dashboard-result p {
+  color: black;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.dashboard-result button {
+  display: block;
+  /* margin-left: 10px;
+  margin-right: 10px; */
+  /* width: 300px; */
+  background: #28d;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  float: right;
+}
+
+.dashboard-result img {
+  border: solid #bbb 2px;
+  border-radius: 3px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  margin-bottom: 20px;
 }
