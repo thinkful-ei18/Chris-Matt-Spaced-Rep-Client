@@ -1,10 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
-
-import LoginForm from './login-form';
 
 import '../stylesheets/nav-bar.css';
 
@@ -15,27 +13,25 @@ export class NavBar extends React.Component {
   }
 
   render() {
-    let logOutButton;
+    let navigation = (
+      <div className="loginNav">
+        <Link to="/login">
+          Login
+        </Link>
+        <Link to="/register">
+          Register
+        </Link>
+      </div>
+    );
     if (this.props.loggedIn) {
-        logOutButton = (
-            <button 
-              className="smoothScroll" 
-              onClick={() => this.logOut()}>
-                Logout
-            </button>
-        );
-    }
-    let userInfo;
-    if (this.props.loggedIn) {
-      userInfo = (
+      navigation = (
         <div className="dropdown">
           <button className="dropbtn">Hello, {this.props.currentUser.username}!</button>
           <div className="dropdown-content">
-            <a>Link 1</a>
-            <a 
-              className="smoothScroll" 
-              onClick={() => this.logOut()}>
-                Logout
+            <Link to="/summary">User Info</Link>
+            <Link to="/instructions">Instructions</Link>
+            <a onClick={() => this.logOut()}>
+              Logout
             </a>
           </div>
         </div>
@@ -45,14 +41,14 @@ export class NavBar extends React.Component {
     return (
       <div className="nav-bar">
           <header>
-            <div className="navWrapper" id="home">
-              <h2 className="companyName">Spanish Tutor</h2>
+            <div className="navWrapper">
+              <h2 className="companyName"><Link to="/">Spanish Tutor</Link></h2>
               <nav className="mainNav clearfix">
-                {userInfo}                  
+                {navigation}                  
               </nav>
             </div>
           </header>
-        </div>
+      </div>
     );
   }
 }

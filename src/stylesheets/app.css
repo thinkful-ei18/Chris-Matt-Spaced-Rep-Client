@@ -1,7 +1,7 @@
 .overlay {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: url(http://farm8.staticflickr.com/7064/6858179818_5d652f531c_h.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -27,4 +27,9 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }
