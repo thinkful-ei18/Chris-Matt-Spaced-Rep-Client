@@ -52,7 +52,7 @@ export class Dashboard extends React.Component {
         } else if (this.state.isCorrect === 'incorrect') {
             return (
             <div className="dashboard-result">
-                <p>You are incorrect</p>
+                <p>I'm sorry. The correct answer was "{answer}".</p>
                 <button
                     onClick={event => {
                         event.preventDefault();
