@@ -13,7 +13,7 @@ export function RegistrationPage(props) {
     return (
         <div className="home">
             <RegistrationForm />
-            <p>Already have an account? <Link to="/login">Login</Link></p>
+            <p className="bottom-link" >Already have an account? <Link to="/login">Login</Link></p>
         </div>
     );
 }

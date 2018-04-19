@@ -25,7 +25,7 @@ export class Dashboard extends React.Component {
         for (let i = 0; i < questions.length; i++) {
             if (questions[i].head) {
                 question = (
-                    <header role='banner' >
+                    <header role="banner" >
                         <h3>What is <blockquote lang='es'>"{questions[i].spanish}"</blockquote> in English?</h3>
                     </header>
                 );
@@ -36,35 +36,46 @@ export class Dashboard extends React.Component {
         if (this.state.isCorrect === 'correct') {
             return (
             <div className="dashboard-result">
-                <img src="https://amols-images.s3.amazonaws.com/2017/06/02/10/35/56/5d02a97f-5ead-4d39-9bd4-f208d57f2a7b/donkey%20pinatas.jpg" alt="Victory Pinata"/>            
-                <p>Woohoo! You got it!</p>
-                <button
-                    onClick={event => {
+                <main role="main" >
+                    <img 
+                        src="https://amols-images.s3.amazonaws.com/2017/06/02/10/35/56/5d02a97f-5ead-4d39-9bd4-f208d57f2a7b/donkey%20pinatas.jpg" 
+                        alt="Victory Pinata"
+                    />            
+                    <p>Woohoo! You got it!</p>
+                    <button
+                        onClick={event => {
+                            event.preventDefault();
+                            this.props.dispatch(fetchData(this.props.id));
+                            this.setState({
+                                isCorrect: 'nothing'
+                            })
+                        }}>
+                        Next Question
+                    </button>
+                </main>
+            </div>
+            )
+        } else if (this.state.isCorrect === 'incorrect') {
+            return (
+            <div className="dashboard-result">
+                <main role="main" >
+                    <img 
+                        src="http://epeusa.com/wp-content/uploads/2017/03/pinata-broken.jpg" 
+                        alt="Broken Pinata"
+                    />     
+                    <p>I'm sorry. The correct answer was "{answer}".</p>
+                    <form onSubmit={event => {
                         event.preventDefault();
                         this.props.dispatch(fetchData(this.props.id));
                         this.setState({
                             isCorrect: 'nothing'
                         })
                     }}>
-                    Next Question
-                </button>
-            </div>
-            )
-        } else if (this.state.isCorrect === 'incorrect') {
-            return (
-            <div className="dashboard-result">
-                <p>I'm sorry. The correct answer was "{answer}".</p>
-                <form onSubmit={event => {
-                    event.preventDefault();
-                    this.props.dispatch(fetchData(this.props.id));
-                    this.setState({
-                        isCorrect: 'nothing'
-                    })
-                }}>
-                    <button>
-                        Next Question
-                    </button>
-                </form>
+                        <button>
+                            Next Question
+                        </button>
+                    </form>
+                </main>
             </div>
             )
         }
@@ -72,8 +83,8 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 <div className="dashboard-question">
+                {question}
                 <main role='main'>
-                    {question}
                     <form onSubmit={event => {
                         event.preventDefault();
                         let userAnswer = this.answer.value.toLowerCase();

@@ -15,7 +15,7 @@ export function LoginPage(props) {
     return (
         <div className="home">
             <LoginForm />
-            <p>Don't have an account? <Link to="/register">Register</Link></p>
+            <p className="bottom-link" >Don't have an account? <Link to="/register">Register</Link></p>
         </div>
     );
 }

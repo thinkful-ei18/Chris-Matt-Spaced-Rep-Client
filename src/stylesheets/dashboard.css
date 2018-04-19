@@ -142,6 +142,31 @@ body {
   font-size: 16px;
 }
 
-/* .dashboard h3, blockquote {
-  display: inline;
-} */
+@media (max-width:320px) {
+  .dashboard-question {
+    display: block;
+    width: 100vw;
+    position: relative;
+    margin-left: -60vw;
+    left: 30%;
+    /* margin: 16px auto; */
+    padding-bottom: 16px;
+    font-size: 16px;
+    background: #ebebeb;
+    border-radius: 10px;
+    /* float: right; */
+    /* text-align: center; */
+  }
+
+  .dashboard-result {
+    display: block;
+    width: 100vw;
+    /* position: relative; */
+    margin-left: -60vw;
+    left: 60%;
+  }
+
+  .dashboard-result img {
+    width: 80%;
+  }
+}
