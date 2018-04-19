@@ -88,7 +88,7 @@ header nav ul li a:focus {
 header {
 	/* background: url(https://ununsplash.imgix.net/uploads/141319062591093cefc09/ad50c1f0?q=75&fm=jpg&s=a356dd61ff3da2269124bcd12a303b7e); */
 	background-size: cover;
-	background-attachment: fixed;
+	/* background-attachment: fixed; */
 }
 
 .hero {

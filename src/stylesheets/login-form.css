@@ -87,3 +87,16 @@
 .login-form button:focus {
   border-color: #05a;
 }
+.instruction-set {
+  overflow-y: scroll;
+}
+
+.instructions {
+  color: black;
+  /* margin: 20px 0; */
+  padding: 20px;
+}
+
+.instructions-header {
+  padding-left: 20px;
+}
