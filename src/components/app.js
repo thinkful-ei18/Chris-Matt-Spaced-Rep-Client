@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
 
-import HeaderBar from './header-bar';
+import NavBar from './nav-bar';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import Summary from './summary';
@@ -46,7 +46,7 @@ export class App extends React.Component {
             <div className="app">
                 <div className="overlay"/>
                 <div className="overlay-content">
-                    <HeaderBar />
+                    <NavBar />
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/summary" component={Summary} />

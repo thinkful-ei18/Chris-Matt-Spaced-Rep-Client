@@ -18,31 +18,38 @@ export class NavBar extends React.Component {
     let logOutButton;
     if (this.props.loggedIn) {
         logOutButton = (
-            <button className="smoothScroll" onClick={() => this.logOut()}>Log out</button>
+            <button 
+              className="smoothScroll" 
+              onClick={() => this.logOut()}>
+                Logout
+            </button>
         );
     }
-    // return (
-    //     <div className="header-bar">
-    //         {logOutButton}
-    //     </div>
-    // );
+    let userInfo;
+    if (this.props.loggedIn) {
+      userInfo = (
+        <div className="dropdown">
+          <button className="dropbtn">Hello, {this.props.currentUser.username}!</button>
+          <div className="dropdown-content">
+            <a>Link 1</a>
+            <a 
+              className="smoothScroll" 
+              onClick={() => this.logOut()}>
+                Logout
+            </a>
+          </div>
+        </div>
+      )
+    }
 
     return (
       <div className="nav-bar">
           <header>
             <div className="navWrapper" id="home">
-              <div className=" clearfix">
-                <h2 className="companyName">Spanish Tutor</h2>
-                <nav className="mainNav clearfix">
-                  <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#work" className="smoothScroll">Work</a></li>
-                    <li><a href="#about" className="smoothScroll">About</a></li>
-                    <li><a>{logOutButton}</a></li>                    
-                    {/* <li><a href="#contact" className="smoothScroll">Contact</a></li> */}
-                  </ul>
-                </nav>
-              </div>
+              <h2 className="companyName">Spanish Tutor</h2>
+              <nav className="mainNav clearfix">
+                {userInfo}                  
+              </nav>
             </div>
           </header>
         </div>
@@ -51,7 +58,8 @@ export class NavBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    currentUser: state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(NavBar);
