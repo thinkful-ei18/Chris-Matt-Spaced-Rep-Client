@@ -40,6 +40,7 @@ export class NavBar extends React.Component {
 
     return (
       <div className="nav-bar">
+        <nav role="navigation" >
           <header>
             <div className="navWrapper">
               <h2 className="companyName"><Link to="/">Spanish Tutor</Link></h2>
@@ -48,6 +49,7 @@ export class NavBar extends React.Component {
               </nav>
             </div>
           </header>
+        </nav>
       </div>
     );
   }

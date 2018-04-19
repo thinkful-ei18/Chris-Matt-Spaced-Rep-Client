@@ -25,9 +25,9 @@ export class Dashboard extends React.Component {
         for (let i = 0; i < questions.length; i++) {
             if (questions[i].head) {
                 question = (
-                    <h3>
-                        What is "{questions[i].spanish}" in English?
-                    </h3>
+                    <header role='banner' >
+                        <h3>What is <blockquote lang='es'>"{questions[i].spanish}"</blockquote> in English?</h3>
+                    </header>
                 );
                 answer = questions[i].english;
             }
@@ -71,7 +71,8 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 <div className="dashboard-question">
-                {question}
+                <main role='main'>
+                    {question}
                     <form onSubmit={event => {
                         event.preventDefault();
                         let userAnswer = this.answer.value.toLowerCase();
@@ -97,6 +98,7 @@ export class Dashboard extends React.Component {
                         />
                         <button>Submit</button>
                     </form>
+                </main>
                 </div>
             </div>
         );
