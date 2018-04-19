@@ -90,6 +90,7 @@ export class Dashboard extends React.Component {
                         <input 
                             placeholder="Your Answer"
                             name="answer"
+                            required
                             ref={input => this.answer = input}
                         />
                         <button>Submit</button>

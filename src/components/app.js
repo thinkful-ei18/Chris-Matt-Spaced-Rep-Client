@@ -9,6 +9,8 @@ import Summary from './summary';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 
+import '../stylesheets/app.css';
+
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
         if (!prevProps.loggedIn && this.props.loggedIn) {
@@ -42,11 +44,14 @@ export class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <HeaderBar />
-                <Route exact path="/" component={LandingPage} />
-                <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/summary" component={Summary} />
-                <Route exact path="/register" component={RegistrationPage} />
+                <div className="overlay"/>
+                <div className="overlay-content">
+                    <HeaderBar />
+                    <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/summary" component={Summary} />
+                    <Route exact path="/register" component={RegistrationPage} />
+                </div>
             </div>
         );
     }

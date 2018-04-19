@@ -25,14 +25,25 @@ export class RegistrationForm extends React.Component {
                 )}>
                 <h2 className="login-header">Register for Spanish Tutor</h2>
                 <label htmlFor="fullname">Full Name</label>
-                <Field component={Input} type="text" name="fullname" />
+                <Field 
+                    component={Input} 
+                    type="text" 
+                    name="fullname" 
+                    placeholder="fullname"
+                />
                 <label htmlFor="email">Email</label>
-                <Field component={Input} type="text" name="email" />
+                <Field 
+                    component={Input} 
+                    type="text" 
+                    name="email"
+                    placeholder="email"
+                />
                 <label htmlFor="username">Username</label>
                 <Field
                     component={Input}
                     type="text"
                     name="username"
+                    placeholder="username"
                     validate={[required, nonEmpty, isTrimmed]}
                 />
                 <label htmlFor="password">Password</label>
@@ -40,6 +51,7 @@ export class RegistrationForm extends React.Component {
                     component={Input}
                     type="password"
                     name="password"
+                    placeholder="password"
                     validate={[required, passwordLength, isTrimmed]}
                 />
                 <label htmlFor="passwordConfirm">Confirm password</label>
@@ -47,6 +59,7 @@ export class RegistrationForm extends React.Component {
                     component={Input}
                     type="password"
                     name="passwordConfirm"
+                    placeholder="confirm password"
                     validate={[required, nonEmpty, matchesPassword]}
                 />
                 <button

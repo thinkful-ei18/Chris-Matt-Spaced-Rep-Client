@@ -33,6 +33,7 @@ export class LoginForm extends React.Component {
                     type="text"
                     name="username"
                     id="username"
+                    placeholder="username"
                     validate={[required, nonEmpty]}
                 />
                 <label htmlFor="password">Password</label>
@@ -41,6 +42,7 @@ export class LoginForm extends React.Component {
                     type="password"
                     name="password"
                     id="password"
+                    placeholder="password"
                     validate={[required, nonEmpty]}
                 />
                 {error}
