@@ -4,6 +4,7 @@ import requiresLogin from './requires-login';
 import {fetchData} from '../actions/question';
 import {updateQuestions} from '../actions/users';
 
+import NavBar from '../components/nav-bar';
 import '../stylesheets/dashboard.css';
 
 export class Dashboard extends React.Component {
@@ -36,6 +37,7 @@ export class Dashboard extends React.Component {
         if (this.state.isCorrect === 'correct') {
             return (
             <div className="dashboard-result">
+                <img src="https://amols-images.s3.amazonaws.com/2017/06/02/10/35/56/5d02a97f-5ead-4d39-9bd4-f208d57f2a7b/donkey%20pinatas.jpg" />            
                 <p>You are correct</p>
                 <button
                     onClick={event => {
@@ -66,8 +68,10 @@ export class Dashboard extends React.Component {
             </div>
             )
         }
+
         return (
             <div className="dashboard">
+                <NavBar />
                 <div className="dashboard-question">
                 {question}
                     <form onSubmit={event => {
@@ -86,7 +90,7 @@ export class Dashboard extends React.Component {
                         }
                         this.answer.value = '';
                     }}>
-                        <label htmlFor="answer">English Translation:</label>
+                        <label htmlFor="answer"></label>
                         <input 
                             placeholder="Your Answer"
                             name="answer"
