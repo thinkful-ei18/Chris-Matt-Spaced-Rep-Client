@@ -54,16 +54,17 @@ export class Dashboard extends React.Component {
             return (
             <div className="dashboard-result">
                 <p>I'm sorry. The correct answer was "{answer}".</p>
-                <button
-                    onClick={event => {
-                        event.preventDefault();
-                        this.props.dispatch(fetchData(this.props.id));
-                        this.setState({
-                            isCorrect: 'nothing'
-                        })
-                    }}>
-                    Next Question
-                </button>
+                <form onSubmit={event => {
+                    event.preventDefault();
+                    this.props.dispatch(fetchData(this.props.id));
+                    this.setState({
+                        isCorrect: 'nothing'
+                    })
+                }}>
+                    <button>
+                        Next Question
+                    </button>
+                </form>
             </div>
             )
         }
