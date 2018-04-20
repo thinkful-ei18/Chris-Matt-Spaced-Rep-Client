@@ -108,7 +108,7 @@
     width: 100vw;
     position: relative;
     margin-left: -65vw;
-    left: 41%;
+    left: 52%;
     /* margin: 16px auto; */
     padding-bottom: 16px;
     font-size: 16px;
@@ -122,7 +122,7 @@
     width: 100vw;
     position: relative;
     margin-left: -65vw;
-    left: 3%;
+    left: 20%;
   }
 
   .instruction-set {
@@ -135,12 +135,12 @@
   }
 
   .instruction-set-landing {
-    margin-top: 170px;
+    margin-top: 100px;
     display: block;
     width: 100vw;
     position: relative;
     margin-left: -65vw;
-    left: 11%;
+    left: 57%;
   }
 
 }
