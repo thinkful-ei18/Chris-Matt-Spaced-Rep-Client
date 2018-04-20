@@ -7,4 +7,9 @@ describe('<LandingPage />', () => {
     it('Renders without crashing', () => {
       shallow(<LandingPage />);
     });
+
+    it('Renders login form', () => {
+      const editor = shallow(<LandingPage />);
+      expect(editor.find('div.home').length).toEqual(1);
+    });
 });
