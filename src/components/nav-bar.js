@@ -30,7 +30,7 @@ export class NavBar extends React.Component {
           <div className="dropdown-content">
             <Link to="/summary">User Info</Link>
             <Link to="/instructions">Instructions</Link>
-            <a onClick={() => this.logOut()}>
+            <a className="logout" onClick={() => this.logOut()}>
               Logout
             </a>
           </div>
