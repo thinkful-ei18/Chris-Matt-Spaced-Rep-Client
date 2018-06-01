@@ -21,7 +21,9 @@ export function LandingPage(props) {
                         <p className="instructions" >
                             Welcome to Spanish Tutor, your source for adaptive learning! 
                             <br/><br/>
-                            If you don't have an account, please click on the "Register" button to access the form.
+                            For demoing, please login with Username "demo" and Password "demoaccount".  
+                            <br/><br/>
+                            If you would like to register, click on the "Register" button to access the form.
                             <br/><br/>
                             Spanish Tutor is a quiz app designed to adapt to your learning needs.  This means that questions you get right more often will be asked later.  The questions you tend to get wrong will be asked again sooner.
                         </p>
