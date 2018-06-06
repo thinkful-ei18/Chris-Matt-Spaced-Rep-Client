@@ -26,6 +26,10 @@ POST https://chris-matt-spaced-rep.herokuapp.com/api/auth/login
 
 GET https://chris-matt-spaced-rep.herokuapp.com/api/questions/:id
 
+#### Check if Answer is Correct
+
+UPDATE https://chris-matt-spaced-rep.herokuapp.com/api/users/:id
+
 # Landing Page
 ![Landing Page](https://raw.githubusercontent.com/thinkful-ei18/Chris-Matt-Spaced-Rep-Client/master/img/instructions-full.png)
 
