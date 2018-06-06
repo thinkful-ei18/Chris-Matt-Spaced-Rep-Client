@@ -12,6 +12,20 @@ Spanish Tutor is a quiz app designed to adapt to your learning needs. This means
 ### How Questions Are Stored
 The questions are stored in the database as a singly linked list. Each question is initialized for a new user with an "m" value of 1. If a question is answered correctly, "m" is multiplied by 2 and is moved 2*m down the singly linked-list. If a question is answered incorrectly, "m" reset to 1 and is added after next question.
 
+### API
+
+#### Create a User
+
+POST https://chris-matt-spaced-rep.herokuapp.com/api/users
+
+#### Login
+
+POST https://chris-matt-spaced-rep.herokuapp.com/api/auth/login
+
+#### Get a Question
+
+GET https://chris-matt-spaced-rep.herokuapp.com/api/questions/:id
+
 # Landing Page
 ![Landing Page](https://raw.githubusercontent.com/thinkful-ei18/Chris-Matt-Spaced-Rep-Client/master/img/instructions-full.png)
 
